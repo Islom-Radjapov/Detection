@@ -1,7 +1,10 @@
-import time
+"""
+    started project 2022-11-02"
+    author project Islom Radjapov
+"""
 
 from keras import models
-from keras.utils import img_to_array
+# from keras.utils import img_to_array
 import numpy as np
 import cv2
 import cvlib as cv
@@ -24,7 +27,7 @@ while webcam.isOpened():
     face, confidence = cv.detect_face(frame)
 
     # loop through detected faces
-    for idx, f in enumerate(face):
+    for _, f in enumerate(face):
         # time.sleep(.5)
 
         # get corner points of face rectangle
@@ -37,16 +40,13 @@ while webcam.isOpened():
         # crop the detected face region
         face_crop = np.copy( frame[startY:endY,startX:endX] )
 
-        # if (face_crop.shape[0]) < 10 or (face_crop.shape[1]) < 10:
-        #     continue
+        if face_crop.shape[0] < 10 or face_crop.shape[1] < 10:   # kamerani chetida yuzni yarimini aniqlaganda dasturimiz ochib qolmasligi uchun
+            continue
 
         # preprocessing for gender detection model
         face_crop = cv2.resize( face_crop, (96, 96) )
-        print(face_crop)
-        face_crop = face_crop.astype("float") / 255.0
-        print("----------")
-        print(face_crop)
-        face_crop = img_to_array(face_crop)
+        face_crop = face_crop.astype("float") / 255
+        # face_crop = img_to_array(face_crop)
         face_crop = np.expand_dims(face_crop, axis=0)
 
         # apply gender detection on face
@@ -56,9 +56,10 @@ while webcam.isOpened():
         idx = np.argmax(conf)
         label = classes[idx]
 
-        label = "{}: {:.2f}%".format(label, conf[idx] * 100)
+        # get gender label and percent
+        label = f"{label}: {round(conf[idx] * 100, 2)}%"
 
-        Y = startY - 10 if startY - 10 > 10 else startY + 10
+        Y = startY - 10 if startY - 10 > 10 else startY + 10    # aniqlangan face ustini oladi label yozish uchun
 
         # write label and confidence above face rectangle
         cv2.putText(frame, label, (startX, Y),  cv2.FONT_HERSHEY_SIMPLEX,
@@ -70,7 +71,6 @@ while webcam.isOpened():
     # press "Q" to stop
     if cv2.waitKey(1) == ord('q'):
         break
-    break
 
 # release resources
 webcam.release()
