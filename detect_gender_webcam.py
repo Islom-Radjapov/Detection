@@ -9,12 +9,12 @@ import numpy as np
 import cv2
 import cvlib as cv
 
-
 # load model
 model = models.load_model('gender_detection.model')
 # open webcam
 webcam = cv2.VideoCapture(0)
 
+# gender type
 classes = ['man','woman']
 
 # loop through frames
@@ -28,7 +28,6 @@ while webcam.isOpened():
 
     # loop through detected faces
     for _, f in enumerate(face):
-        # time.sleep(.5)
 
         # get corner points of face rectangle
         (startX, startY) = f[0], f[1]
