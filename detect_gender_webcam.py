@@ -4,7 +4,7 @@
 """
 
 from keras import models
-# from keras.utils import img_to_array
+# from keras.utils import img_to_array     # ???
 import numpy as np
 import cv2
 import cvlib as cv
@@ -45,7 +45,7 @@ while webcam.isOpened():
         # preprocessing for gender detection model
         face_crop = cv2.resize( face_crop, (96, 96) )
         face_crop = face_crop.astype("float") / 255
-        # face_crop = img_to_array(face_crop)
+        # face_crop = img_to_array(face_crop)   # ???
         face_crop = np.expand_dims(face_crop, axis=0)
 
         # apply gender detection on face
