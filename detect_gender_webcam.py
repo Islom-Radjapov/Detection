@@ -12,7 +12,7 @@ import cvlib as cv
 # load model
 model = models.load_model('gender_detection.model')
 # open webcam
-webcam = cv2.VideoCapture(0)
+webcam = cv2.VideoCapture()
 
 # gender type
 classes = ['man','woman']
