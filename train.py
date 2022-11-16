@@ -1,10 +1,10 @@
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.preprocessing.image import img_to_array
-from tensorflow.keras.utils import to_categorical, plot_model
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import BatchNormalization, Conv2D, MaxPooling2D, Activation, Flatten, Dropout, Dense
-from tensorflow.keras import backend as K
+from keras.preprocessing.image import ImageDataGenerator
+from keras.optimizers import Adam
+from keras.preprocessing.image import img_to_array
+from keras.utils import to_categorical, plot_model
+from keras.models import Sequential
+from keras.layers import BatchNormalization, Conv2D, MaxPooling2D, Activation, Flatten, Dropout, Dense
+from keras import backend as K
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import numpy as np
@@ -139,6 +139,7 @@ plt.title("Training Loss and Accuracy")
 plt.xlabel("Epoch #")
 plt.ylabel("Loss/Accuracy")
 plt.legend(loc="upper right")
+
 
 # save plot to disk
 plt.savefig('plot.png')
