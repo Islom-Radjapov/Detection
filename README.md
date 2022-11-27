@@ -1,2 +1,2 @@
 # Detection
-Detection test project
+Gender detection project
