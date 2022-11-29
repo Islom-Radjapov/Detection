@@ -35,7 +35,7 @@ for img in image_files:
     image = img_to_array(image)
     data.append(image)
 
-    label = img.split(os.path.sep)[-2] # C:\Files\gender_dataset_face\woman\face_1162.jpg
+    label = img.split(os.path.sep)[-2] # gender_dataset_face\woman\face_1162.jpg
     if label == "woman":
         label = 1
     else:
