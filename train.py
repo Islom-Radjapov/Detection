@@ -23,7 +23,7 @@ data = []
 labels = []
 
 # load image files from the dataset
-image_files = [f for f in glob.glob(r'/Users/student/PycharmProjects/Detection/gender_dataset_face' + "/**/*", recursive=True) if not os.path.isdir(f)]
+image_files = [f for f in glob.glob(r'C:\Users\islom\PycharmProjects\Detection\gender_dataset_face' + "/**/*", recursive=True) if not os.path.isdir(f)]
 random.shuffle(image_files)
 
 # converting images to arrays and labelling the categories
@@ -137,7 +137,6 @@ plt.title("Training Loss and Accuracy")
 plt.xlabel("Epoch #")
 plt.ylabel("Loss/Accuracy")
 plt.legend(loc="upper right")
-
 
 # save plot to disk
 plt.savefig('plot.png')
